@@ -5,6 +5,8 @@
  */
 package abstraccion;
 
+import java.util.HashSet;
+
 /**
  *
  * @author T-102
@@ -71,8 +73,13 @@ public class Aplicacion extends javax.swing.JFrame {
     private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
         // TODO add your handling code here:
         Usuario ju = new Usuario ();
-        ju.peso = 95;
-        ju.altura = 1.83f;
+        //ju.peso = 95; 
+        //ju.altura = 1.83f;
+          ju.setPeso(70);
+          ju.setAltura (1.60f);
+        
+                  
+                  
         Imc modelo = new Imc();
         modelo.u = ju;  
             etiqueta.setText(modelo.calcular());
