@@ -6,6 +6,7 @@
 package abstraccion;
 
 import java.util.HashSet;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -46,6 +47,12 @@ public class Aplicacion extends javax.swing.JFrame {
         });
 
         etiqueta.setText("Resultado");
+
+        textopeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textopesoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Peso");
 
@@ -102,8 +109,15 @@ public class Aplicacion extends javax.swing.JFrame {
         Usuario ju = new Usuario ();
         //ju.peso = 95; 
         //ju.altura = 1.83f;
-          ju.setPeso(70);
-          ju.setAltura (1.60f);
+        
+        String alt = textoaltura.getText();
+        String pes = textopeso.getText();
+        
+        float x = Float.parseFloat(alt);
+        float y = Float.parseFloat(pes);
+        
+          ju.setPeso(y);
+          ju.setAltura (x);
         
                   
                   
@@ -111,6 +125,10 @@ public class Aplicacion extends javax.swing.JFrame {
         modelo.u = ju;  
             etiqueta.setText(modelo.calcular());
     }//GEN-LAST:event_botonActionPerformed
+
+    private void textopesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textopesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textopesoActionPerformed
 
     /**
      * @param args the command line arguments
