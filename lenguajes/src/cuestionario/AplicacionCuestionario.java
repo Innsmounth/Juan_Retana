@@ -1,8 +1,10 @@
 
 package cuestionario;
 
+import com.sun.javafx.scene.control.skin.RadioButtonSkin;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 
@@ -23,6 +25,7 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         etiquetaTitulo = new javax.swing.JLabel();
         panelOpciones = new javax.swing.JPanel();
+        botonRespuesta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +41,8 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
         panelOpciones.setBackground(new java.awt.Color(255, 255, 255));
         panelOpciones.setLayout(new java.awt.GridLayout(4, 1));
 
+        botonRespuesta.setText("Checar Respuesta");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -50,9 +55,11 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(botonRespuesta))
                     .addComponent(etiquetaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,8 +67,13 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etiquetaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(botonRespuesta)))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
 
@@ -119,6 +131,7 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonRespuesta;
     private javax.swing.JLabel etiquetaTitulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -140,7 +153,7 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
         grupo.add(r4);
         
         //Los agregamos al panel opciones
-        panelOpciones.add(r1);
+       panelOpciones.add(r1);
         panelOpciones.add(r2);
         panelOpciones.add(r3);
         panelOpciones.add(r4);
@@ -148,14 +161,54 @@ public class AplicacionCuestionario extends javax.swing.JFrame {
         //vamos a indicar que que ponga la primer pregunta y
         //sus respectivas opciones
         
-        ArrayList<Pregunta> preguntas = new GeneradorCuestionario().generador();
+        ArrayList <Pregunta> preguntas = new GeneradorCuestionario().generador();
         // Del arraylist que se llama pregunta obtenemos el titulo de la primera preunta
+        
+        ArrayList<JRadioButton>radios = new ArrayList<>();
+        
+        ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////Revisar//////
+        /*
+        JRadioButton [] radios2 = new JRadioButton[preguntas.get(0).getOpciones().size()];
+        etiquetaTitulo.setText(preguntas.get(0).getTitulo());
+        int indice = 0;
+        for (JRadioButton radio : radios2)
+        {
+        grupo.add(radio);
+        radio.setText(preguntas.get(0).getOpciones().get(indice).getTitulo());
+        
+        panelOpciones.add(radio);
+        indice ++;
+        
+        }
+        /*??????????????????????????????????*/
+        //////////////////////hasta aqui */
+        
+        
+        
+        
+        
+        
         
         etiquetaTitulo.setText(preguntas.get(0).getTitulo()) ;
         r1.setText(preguntas.get(0).getOpciones().get(0).getTitulo());
         r2.setText(preguntas.get(0).getOpciones().get(1).getTitulo());
         r3.setText(preguntas.get(0).getOpciones().get(2).getTitulo());
         r4.setText(preguntas.get(0).getOpciones().get(3).getTitulo());
+         
+        
+
+        //Programaremos el evento de boton con programacion funcional
+        //PRogramacion funcional
+        //Vamos a buscar la opcion correcta
+        
+        
+        
+        botonRespuesta.addActionListener(evento->{
+            
+            JOptionPane.showConfirmDialog(this, "Probando evento");
+        });
+        
         
     }
 }
