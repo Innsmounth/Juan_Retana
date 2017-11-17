@@ -112,9 +112,15 @@ public class Aplicacion extends javax.swing.JFrame {
         
         String alt = textoaltura.getText();
         String pes = textopeso.getText();
+      
+        try {
         
+            
         float x = Float.parseFloat(alt);
+        Validaciones.valodarNumeroNoNegativo(x);
+        
         float y = Float.parseFloat(pes);
+        Validaciones.valodarNumeroNoNegativo(y);
         
           ju.setPeso(y);
           ju.setAltura (x);
@@ -124,6 +130,13 @@ public class Aplicacion extends javax.swing.JFrame {
         Imc modelo = new Imc();
         modelo.u = ju;  
             etiqueta.setText(modelo.calcular());
+        }
+        catch(Exception e) 
+        {
+            etiqueta.setText(e.getMessage());
+        }    
+        
+        
     }//GEN-LAST:event_botonActionPerformed
 
     private void textopesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textopesoActionPerformed
