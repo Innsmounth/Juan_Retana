@@ -7,6 +7,7 @@ public class Fruta {
     private float costo;
     
     
+    
    public void Fruta(){
    //Esto no es un contructor, es un metodo
    }
